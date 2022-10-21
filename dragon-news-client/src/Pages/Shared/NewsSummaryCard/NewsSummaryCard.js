@@ -6,7 +6,6 @@ import Image from "react-bootstrap/Image";
 import { FaEye, FaRegBookmark, FaShareAlt, FaStar } from "react-icons/fa";
 
 const NewsSummaryCard = ({ news }) => {
-  console.log(news);
   const { _id, title, total_view, author, details, image_url, rating } = news;
   return (
     <div>
@@ -33,12 +32,12 @@ const NewsSummaryCard = ({ news }) => {
           <Card.Img variant="top" src={image_url} />
           <Card.Text>
             {details.length > 200 ? (
-              <p>
+              <>
                 {details.slice(0, 200) + "..."}{" "}
                 <Link to={`/news/${_id}`}>Read more</Link>
-              </p>
+              </>
             ) : (
-              <p>{details}</p>
+              details
             )}
           </Card.Text>
           <Button variant="primary">Go somewhere</Button>
