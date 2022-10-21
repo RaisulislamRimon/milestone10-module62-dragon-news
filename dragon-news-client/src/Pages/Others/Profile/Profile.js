@@ -6,10 +6,11 @@ import { AuthContext } from "../../../contexts/AuthProvider/AuthProvider";
 const Profile = () => {
   const { user } = useContext(AuthContext);
   const [name, setName] = useState(user.displayName);
+  const photoURLRef = useState(user.photoURL);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(name);
+    console.log(name, photoURLRef.current.value);
   };
 
   const handleNameChange = (e) => {
@@ -40,6 +41,7 @@ const Profile = () => {
       <Form.Group className="mb-3" controlId="formBasicPassword">
         <Form.Label>Photo URL</Form.Label>
         <Form.Control
+          ref={photoURLRef}
           defaultValue={user?.photoURL}
           type="text"
           placeholder="Photo URL"
