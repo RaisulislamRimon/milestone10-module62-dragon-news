@@ -1,10 +1,15 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import { AuthContext } from "../../../contexts/AuthProvider/AuthProvider";
 
 const Profile = () => {
   const { user } = useContext(AuthContext);
+  const [name, setName] = useState(user.displayName);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+  };
   return (
     <Form>
       <Form.Group className="mb-3" controlId="formBasicEmail">
@@ -20,9 +25,18 @@ const Profile = () => {
       <Form.Group className="mb-3" controlId="formBasicPassword">
         <Form.Label>Your name</Form.Label>
         <Form.Control
-          defaultValue={user?.displayName}
+          defaultValue={name}
           type="text"
           placeholder="Name"
+        />
+      </Form.Group>
+
+      <Form.Group className="mb-3" controlId="formBasicPassword">
+        <Form.Label>Photo URL</Form.Label>
+        <Form.Control
+          defaultValue={user?.photoURL}
+          type="text"
+          placeholder="Photo URL"
         />
       </Form.Group>
       <Form.Group className="mb-3" controlId="formBasicCheckbox">
