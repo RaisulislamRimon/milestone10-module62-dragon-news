@@ -29,6 +29,11 @@ const Register = () => {
         setError(errorMessage);
       });
   };
+
+  const handleAccepted = (e) => {
+    console.log(e.target.checked);
+  };
+
   return (
     <Form onSubmit={handleSubmit}>
       <Form.Group className="mb-3" controlId="formBasicName">
@@ -65,9 +70,10 @@ const Register = () => {
       <Form.Group className="mb-3" controlId="formBasicCheckbox">
         <Form.Check
           type="checkbox"
+          onClick={handleAccepted}
           label={
             <>
-               Accept <Link to="/terms">Terms and conditions</Link>
+              Accept <Link to="/terms">Terms and conditions</Link>
             </>
           }
         />
