@@ -3,6 +3,7 @@ import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../../contexts/AuthProvider/AuthProvider";
+import toast, { Toaster } from "react-hot-toast";
 
 const Register = () => {
   const [error, setError] = useState("");
@@ -24,7 +25,7 @@ const Register = () => {
   const handleEmailVerification = () => {
     verifyEmail()
       .then(() => {})
-      .catch(error.console.error(error));
+      .catch((error) => console.error(error));
   };
 
   const handleSubmit = (event) => {
@@ -44,6 +45,7 @@ const Register = () => {
         form.reset();
         handleUpdateUserProfile(name, photoURL);
         handleEmailVerification();
+        toast.success("Please verify your email address.");
       })
       .catch((error) => {
         const errorMessage = error.code;
