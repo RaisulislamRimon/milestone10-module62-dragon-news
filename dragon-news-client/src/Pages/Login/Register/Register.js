@@ -6,7 +6,12 @@ import { AuthContext } from "../../../contexts/AuthProvider/AuthProvider";
 
 const Register = () => {
   const [error, setError] = useState("");
+  const [accepted, setAccepted] = useState(false);
   const { createUser } = useContext(AuthContext);
+
+  const handleAccepted = (e) => {
+    setAccepted(!accepted);
+  };
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -28,10 +33,6 @@ const Register = () => {
         const errorMessage = error.code;
         setError(errorMessage);
       });
-  };
-
-  const handleAccepted = (e) => {
-    console.log(e.target.checked);
   };
 
   return (
@@ -83,7 +84,7 @@ const Register = () => {
           <Form.Text className="text-danger">{error}</Form.Text>
         </Form.Group>
       )}
-      <Button variant="primary" type="submit">
+      <Button variant="primary" type="submit" disabled={!accepted}>
         Register
       </Button>
     </Form>
