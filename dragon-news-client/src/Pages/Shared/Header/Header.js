@@ -65,7 +65,7 @@ const Header = () => {
                   </>
                 )}
               </>
-              <Nav.Link href="#deets">
+              <Link to='/profile'>
                 {user?.uid ? (
                   <span>
                     <Image
@@ -80,7 +80,7 @@ const Header = () => {
                     <FaUser />
                   </span>
                 )}
-              </Nav.Link>
+              </Link>
             </Nav>
             <div className="d-lg-none">
               <LeftSideNav />
