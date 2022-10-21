@@ -38,6 +38,9 @@ const Login = () => {
       .catch((error) => {
         const errorMessage = error.code;
         setError(errorMessage);
+      })
+      .finally(() => {
+        setLoading(false);
       });
   };
 
