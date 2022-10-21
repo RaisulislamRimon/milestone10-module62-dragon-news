@@ -9,9 +9,14 @@ const Profile = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    console.log(name);
+  };
+
+  const handleNameChange = (e) => {
+    setName(e.target.value);
   };
   return (
-    <Form>
+    <Form onSubmit={handleSubmit}>
       <Form.Group className="mb-3" controlId="formBasicEmail">
         <Form.Label>Email address</Form.Label>
         <Form.Control
@@ -25,6 +30,7 @@ const Profile = () => {
       <Form.Group className="mb-3" controlId="formBasicPassword">
         <Form.Label>Your name</Form.Label>
         <Form.Control
+          onChange={handleNameChange}
           defaultValue={name}
           type="text"
           placeholder="Name"
