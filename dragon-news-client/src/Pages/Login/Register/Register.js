@@ -1,6 +1,7 @@
 import React, { useContext, useState } from "react";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
+import { Link } from "react-router-dom";
 import { AuthContext } from "../../../contexts/AuthProvider/AuthProvider";
 
 const Register = () => {
@@ -59,6 +60,16 @@ const Register = () => {
           name="password"
           placeholder="Password"
           required
+        />
+      </Form.Group>
+      <Form.Group className="mb-3" controlId="formBasicCheckbox">
+        <Form.Check
+          type="checkbox"
+          label={
+            <>
+               Accept <Link to="/terms">Terms and conditions</Link>
+            </>
+          }
         />
       </Form.Group>
       {error && (
